@@ -1,6 +1,6 @@
 # axiom-engine
 
-Axiom Engine is a game-agnostic, config-driven state machine designed to power any strategy or life-simulation game. The engine itself knows nothing about game concepts like health, money, careers, or relationships. Instead, everything domain-specific, what state looks like, what actions exist, what can happen randomly, and what is permanently forbidden, is declared in a Game Config that you hand to the engine.
+Axiom Engine is a game-agnostic, config-driven state machine designed to power any strategy or life-simulation game. A pure TypeScript library with no UI, no game content, and no framework dependencies.
 
 ## Configurations
 
