@@ -14,6 +14,48 @@ function resolveText(
   return typeof event.text === "function" ? event.text(state) : event.text;
 }
 
+/**
+ * Creates a new game engine instance from a `GameConfig`.
+ *
+ * The engine is the single runtime object you interact with. It encapsulates all
+ * mutable state and exposes five methods: `getState`, `getAvailableActions`,
+ * `applyAction`, `tick`, and `undo`.
+ *
+ * The engine itself contains no game-specific knowledge. All rules, events,
+ * attributes, and logic come from the config you provide. Swap the config and
+ * you get an entirely different game.
+ *
+ * @param config - A `GameConfig` object that fully describes your game.
+ * @returns An `Engine` instance ready to play.
+ *
+ * @example
+ * import { createEngine } from "axiom-engine";
+ *
+ * const engine = createEngine({
+ *   initialState: () => ({ health: 80, money: 500 }),
+ *   attributes: {
+ *     health: { min: 0, max: 100, default: 75 },
+ *     money:  { min: 0, max: 99999, default: 0 },
+ *   },
+ *   passiveModifiers: [{ id: "bills", delta: { money: -50 } }],
+ *   actions: [
+ *     {
+ *       id: "work",
+ *       label: "Go to work",
+ *       text: "You worked a full day.",
+ *       effects: [() => ({ money: 100 })],
+ *     },
+ *   ],
+ *   events: [],
+ *   restrictions: [],
+ *   probabilityModifiers: [],
+ *   tickOrder: ["passiveModifierPhase"],
+ * });
+ *
+ * engine.tick();                     // bills deducted
+ * engine.applyAction("work");        // money += 100
+ * console.log(engine.getState().money); // 550
+ */
 export function createEngine(config: GameConfig): Engine {
   let state = buildInitialState(config);
   const undoDepth = config.undoDepth ?? 10;
