@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 import { createEngine } from "../../src/engine/createEngine";
 import type { GameConfig } from "../../src/types/config";
 
