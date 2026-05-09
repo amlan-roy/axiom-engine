@@ -41,11 +41,14 @@ export interface EventDef {
   restrictions?: RestrictionFn[];
   cooldown?: number;
   effects: EffectFn[];
+  /** IDs of events to queue after this one fires. Must match EventDef.id values in GameConfig.events. */
   followUps?: string[];
 }
 
 export interface ActionDef extends EventDef {
   label: string;
+  triggerType?: never;
+  baseProbability?: never;
 }
 
 export interface PassiveModifierDef {
@@ -55,6 +58,7 @@ export interface PassiveModifierDef {
 }
 
 export interface GameConfig {
+  /** Return only game-specific fields; engine fields (tick, history, cooldowns, meta) are added automatically by the engine. */
   initialState: () => Record<string, unknown>;
   attributes: Record<string, AttributeDef>;
   passiveModifiers: PassiveModifierDef[];
