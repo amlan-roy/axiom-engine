@@ -41,14 +41,13 @@ export interface EventDef {
   restrictions?: RestrictionFn[];
   cooldown?: number;
   effects: EffectFn[];
-  /** IDs of events to queue after this one fires. Must match EventDef.id values in GameConfig.events. */
-  followUps?: string[];
 }
 
 export interface ActionDef extends EventDef {
   label: string;
   triggerType?: never;
   baseProbability?: never;
+  cooldown?: never;
 }
 
 export interface PassiveModifierDef {
