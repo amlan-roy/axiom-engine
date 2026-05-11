@@ -1,10 +1,33 @@
 {
   "name": "axiom-engine",
   "version": "0.0.1",
+  "description": "A game-agnostic, config-driven state engine for strategy games, life simulators, and event-driven simulations.",
+  "keywords": [
+    "game-engine",
+    "state-machine",
+    "strategy-game",
+    "simulation",
+    "config-driven",
+    "typescript"
+  ],
+  "author": "Amlan Roy",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amlan-roy/axiom-engine.git"
+  },
+  "bugs": {
+    "url": "https://github.com/amlan-roy/axiom-engine/issues"
+  },
+  "homepage": "https://github.com/amlan-roy/axiom-engine#readme",
+  "publishConfig": {
+    "directory": "build"
+  },
   "module": "./dist/axiom-engine.js",
   "type": "module",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/axiom-engine.js"
     },
     "./dist/": {
