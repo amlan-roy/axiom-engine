@@ -28,7 +28,8 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/axiom-engine.js"
+      "import": "./dist/axiom-engine.js",
+      "default": "./dist/axiom-engine.js"
     },
     "./dist/": {
       "import": "./dist/"
@@ -37,7 +38,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "vite --host",
-    "build": "rimraf build && tsc && vite build && dts-bundle-generator --config ./dts-bundle-generator.config.cjs && copyfiles ./package.json build",
+    "build": "rimraf build && tsc && vite build && dts-bundle-generator --config ./dts-bundle-generator.config.cjs && copyfiles ./package.json build && node -e \"const fs=require('fs');const p=JSON.parse(fs.readFileSync('./build/package.json','utf8'));delete p.scripts.prepare;delete p.scripts['uninstall-husky'];delete p.devDependencies;fs.writeFileSync('./build/package.json',JSON.stringify(p,null,2))\"",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
     "lint:scripts": "eslint . --ext .ts",
