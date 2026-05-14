@@ -1,6 +1,6 @@
 {
   "name": "@amlan-roy/axiom-engine",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A game-agnostic, config-driven state engine for strategy games, life simulators, and event-driven simulations.",
   "keywords": [
     "game-engine",
