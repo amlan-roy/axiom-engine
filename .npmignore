@@ -1,0 +1,34 @@
+# Source
+src/
+
+# Config files
+vite.config.*
+vitest.config.*
+tsconfig*.json
+eslint.config.*
+.eslintrc*
+.prettierrc*
+.stylelintrc*
+dts-bundle-generator.config.*
+commitlint.config.*
+.releaserc*
+
+# Git / CI
+.git/
+.github/
+.husky/
+.gitignore
+.gitattributes
+
+# Tests
+**/*.test.ts
+**/*.spec.ts
+**/__tests__/
+
+# Dev artifacts
+node_modules/
+coverage/
+
+# Misc
+*.log
+.DS_Store

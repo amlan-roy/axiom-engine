@@ -27,3 +27,4 @@ coverage
 *.sw?
 
 local_notes
+.claude/settings.local.json
