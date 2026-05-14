@@ -7,17 +7,22 @@ const getPackageName = () => {
   return packageJson.name;
 };
 
+const getPackageBaseName = () => {
+  return getPackageName().replace(/^@[^/]+\//, "");
+};
+
 const getPackageNameCamelCase = () => {
   try {
-    return getPackageName().replace(/-./g, char => char[1].toUpperCase());
+    const name = getPackageName().replace(/^@[^/]+\//, "");
+    return name.replace(/-./g, char => char[1].toUpperCase());
   } catch {
     throw new Error("Name property in package.json is missing.");
   }
 };
 
 const fileName = {
-  es: `${getPackageName()}.js`,
-  iife: `${getPackageName()}.iife.js`,
+  es: `${getPackageBaseName()}.js`,
+  iife: `${getPackageBaseName()}.iife.js`,
 };
 
 const formats = Object.keys(fileName) as Array<keyof typeof fileName>;

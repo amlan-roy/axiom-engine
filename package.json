@@ -83,7 +83,7 @@
     "vite": "^7.0.3",
     "vitest": "^3.2.4"
   },
-  "main": "./dist/axiom-engine.js",
+  "main": "./build/dist/axiom-engine.js",
   "directories": {
     "doc": "docs",
     "test": "test"

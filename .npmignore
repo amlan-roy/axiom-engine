@@ -20,6 +20,9 @@ commitlint.config.*
 .gitignore
 .gitattributes
 
+# Claude / editor
+.claude/
+
 # Tests
 **/*.test.ts
 **/*.spec.ts
