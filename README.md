@@ -24,6 +24,7 @@ GameConfig (your game)  +  Engine (generic)  =  A playable game
 10. [Undo System](#undo-system)
 11. [Custom Phases](#custom-phases)
 12. [Development](#development)
+13. [Releasing](#releasing)
 
 ---
 
@@ -579,4 +580,27 @@ npm run build         # build ESM + IIFE + type definitions
 | `test:coverage` | Run tests with coverage report                                |
 | `lint:scripts`  | Lint `.ts` files with ESLint                                  |
 | `format`        | Format all files with Prettier and Stylelint                  |
-| `release`       | Publish a new version via semantic-release                    |
+
+---
+
+## Releasing
+
+Releases are published to npm automatically via GitHub Actions when a version tag is pushed. The workflow runs tests, builds the package, and publishes with [OIDC provenance](https://docs.npmjs.com/generating-provenance-statements).
+
+**Steps to release:**
+
+1. Bump the version in `package.json`:
+
+   ```bash
+   npm version patch   # 1.0.0 → 1.0.1
+   npm version minor   # 1.0.0 → 1.1.0
+   npm version major   # 1.0.0 → 2.0.0
+   ```
+
+2. Push the commit and the generated tag:
+
+   ```bash
+   git push && git push --tags
+   ```
+
+The CI release workflow triggers on `v*` tags and handles the rest.
