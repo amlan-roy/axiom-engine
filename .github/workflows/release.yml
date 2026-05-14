@@ -36,3 +36,7 @@ jobs:
         run: npm run build
 
       - uses: JS-DevTools/npm-publish@v4
+        with:
+          package: ./build
+          provenance: true
+          access: public
